@@ -1,0 +1,4 @@
+master:
+  url: jdbc:mysql://localhost:3306/test_clan
+  user: test
+  password: test

@@ -1,0 +1,8 @@
+name: BungeeClan
+version: @version@
+main: cn.mc233.bungeeclan.spigot.BungeeClanSpigot
+softdepend: [PlaceholderAPI]
+
+commands:
+  bungeegang:
+    aliases: [gang,bgang,gh]

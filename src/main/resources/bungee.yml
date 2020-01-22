@@ -1,0 +1,4 @@
+name: BungeeGang
+version: 1.0-SNAPSHOT
+depends: [RedisBungee]
+main: cn.mc233.bungeeclan.bungee.BungeeClanBungee
