@@ -5,9 +5,13 @@ import org.jetbrains.exposed.dao.EntityID
 import java.util.*
 
 
-object ModelPlayers : BaseIntIdTable() {
+object ModelPlayers : BaseIntIdTable(name = "clan_player") {
     override val tableName: String
-        get() = ClanConfigManager.database.master.playerIdMapTable
+        get() {
+            val tableName = ClanConfigManager.database.master.playerIdMapTable
+            if (tableName.isEmpty()) return super.tableName
+            return tableName
+        }
 
     val name = varchar("player", 16).uniqueIndex()
     val uuid = varchar("uuid", 36).uniqueIndex()

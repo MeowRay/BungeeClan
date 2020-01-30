@@ -36,7 +36,7 @@ class ClanDaoTest : StringSpec() {
                     this.ownerPlayer = player.id.value
                 }
                 ModelClan.find { ModelClans.id eq gang.id }.single().let {
-                    it.ownerPlayer shouldBe player
+                    it.ownerPlayer shouldBe player.id.value
                 }
             }
         }
@@ -56,7 +56,7 @@ class ClanDaoTest : StringSpec() {
                 ModelClanProfile.find { ModelClanProfiles.clan eq clan.id }.single().let {
                     it.clan shouldBe clan
                     it.name shouldBe "测试工会"
-                    it.clan.ownerPlayer shouldBe player
+                    it.clan.ownerPlayer shouldBe player.id.value
                 }
 
             }
@@ -78,11 +78,11 @@ class ClanDaoTest : StringSpec() {
                     }
                     ModelMember.new {
                         this.clan = clan
-                        this.player = player
+                        this.player = player.id.value
                     }
                 }
                 ModelMember.find { ModelMembers.clan eq clan.id }.forEachIndexed { i, modelMember ->
-                    modelMember.player.name shouldBe "member$i"
+                    ModelPlayer.findById(modelMember.player)!!.name shouldBe "member$i"
                 }
             }
 

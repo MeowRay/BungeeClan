@@ -9,6 +9,6 @@ data class DatabaseDefinedConfig(
             val user: String = "root",
             val password: String = "",
             val tablePrefix: String = "bungeeclan_",
-            val playerIdMapTable: String
+            val playerIdMapTable: String=""
     )
 }
