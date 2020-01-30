@@ -1,5 +1,6 @@
 package cn.mc233.bungeeclan.bungee.command
 
+import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.chat.TextComponent
 
 class BungeeCommandSender(val dst: CommandSender) : cn.mc233.bungeeclan.common.command.CommandSender<CommandSender> {
