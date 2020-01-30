@@ -33,7 +33,7 @@ class ClanDaoTest : StringSpec() {
                     this.uuid = UUID.randomUUID()
                 }
                 val gang = ModelClan.new {
-                    this.ownerPlayer = player
+                    this.ownerPlayer = player.id.value
                 }
                 ModelClan.find { ModelClans.id eq gang.id }.single().let {
                     it.ownerPlayer shouldBe player
@@ -47,7 +47,7 @@ class ClanDaoTest : StringSpec() {
                     this.uuid = UUID.randomUUID()
                 }
                 val clan = ModelClan.new {
-                    this.ownerPlayer = player
+                    this.ownerPlayer = player.id.value
                 }
                 ModelClanProfile.new {
                     this.clan = clan
@@ -68,7 +68,7 @@ class ClanDaoTest : StringSpec() {
                     this.uuid = UUID.randomUUID()
                 }
                 val clan = ModelClan.new {
-                    this.ownerPlayer = ownerPlayer
+                    this.ownerPlayer = ownerPlayer.id.value
                 }
 
                 for (i in 0..10) {

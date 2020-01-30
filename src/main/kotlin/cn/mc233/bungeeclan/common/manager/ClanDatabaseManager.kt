@@ -2,7 +2,6 @@ package cn.mc233.bungeeclan.common.manager
 
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.TransactionManager
-import org.jetbrains.exposed.sql.transactions.transaction
 import java.io.Closeable
 
 object ClanDatabaseManager : Closeable {

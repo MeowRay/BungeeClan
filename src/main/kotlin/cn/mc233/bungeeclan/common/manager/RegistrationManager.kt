@@ -1,5 +1,7 @@
 package cn.mc233.bungeeclan.common.manager
 
+import kotlin.reflect.KClass
+
 open class RegistrationManager<P : Any> {
     private val lockItems by lazy { Any() }
 
@@ -12,6 +14,8 @@ open class RegistrationManager<P : Any> {
     }
 
 
+    fun <T : P> register(kClass: KClass<T>, item: T) = register(kClass.java, item)
+
     fun <T : P> register(clazz: Class<T>, item: T) = synchronized(lockItems) {
         this.unregister(clazz)
         this.registeredMap[clazz] = item
@@ -21,7 +25,20 @@ open class RegistrationManager<P : Any> {
         this.registeredMap.remove(clazz)
     }
 
-    fun <T : P> get(clazz: Class<T>): T? {
+    fun <T : P> get(kClass: KClass<T>): T {
+        return get(kClass.java)
+    }
+
+    fun <T : P> getSafe(kClass: KClass<T>): T? {
+        return getSafe(kClass.java)
+    }
+
+
+    fun <T : P> get(clazz: Class<T>): T {
+        return getSafe(clazz)!!
+    }
+
+    fun <T : P> getSafe(clazz: Class<T>): T? {
         return this.registeredMap[clazz] as? T
     }
 

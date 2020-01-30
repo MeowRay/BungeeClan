@@ -2,7 +2,6 @@ package cn.mc233.bungeeclan.spigot
 
 import cn.mc233.bungeeclan.spigot.manager.ClanBungeeConfigManager
 import cn.mc233.bungeeclan.spigot.manager.ClanBungeeDatabaseManager
-import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.plugin.java.JavaPlugin

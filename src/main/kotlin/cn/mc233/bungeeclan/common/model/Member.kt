@@ -5,7 +5,7 @@ import org.jetbrains.exposed.dao.EntityID
 
 object ModelMembers : BaseIntIdTable(name = "clan_member") {
     val clan = reference("clan_id", ModelClans).index()
-    val player = reference("player_id", ModelPlayers).index()
+    val player = integer("player_id").index()
 }
 
 class ModelMember(id: EntityID<Int>) : BaseIntEntity(id, ModelMembers) {

@@ -4,12 +4,12 @@ import org.jetbrains.exposed.dao.EntityID
 
 object ModelClans : BaseIntIdTable(name = "clan") {
 
-    val ownerPlayer = reference("owner_player_id", ModelPlayers)
+    val ownerPlayer = integer("owner_player_id")
 }
 
 class ModelClan(id: EntityID<Int>) : BaseIntEntity(id, ModelClans) {
     companion object : BaseIntEntityClass<ModelClan>(ModelClans)
 
-    var ownerPlayer by ModelPlayer referencedOn ModelClans.ownerPlayer
+    var ownerPlayer by ModelClans.ownerPlayer
 
 }

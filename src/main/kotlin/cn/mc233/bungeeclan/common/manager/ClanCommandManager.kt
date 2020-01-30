@@ -3,7 +3,8 @@ package cn.mc233.bungeeclan.common.manager
 import cn.mc233.bungeeclan.common.command.CommandHandler
 import cn.mc233.bungeeclan.common.command.CommandSender
 import cn.mc233.bungeeclan.common.coroutines.ClanThreads
-import kotlinx.coroutines.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 object ClanCommandManager {

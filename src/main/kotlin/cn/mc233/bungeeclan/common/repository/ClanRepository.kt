@@ -1,9 +1,9 @@
 package cn.mc233.bungeeclan.common.repository
 
+import cn.mc233.bungeeclan.common.manager.ClanServiceManager
 import cn.mc233.bungeeclan.common.model.*
-import org.jetbrains.exposed.sql.ColumnSet
+import cn.mc233.bungeeclan.common.service.playerMap
 import org.jetbrains.exposed.sql.and
-import org.jetbrains.exposed.sql.exists
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -37,6 +37,7 @@ class ClanRepository : Repository() {
      * 如果不存在，返回null
      */
     fun getOwnerPlayerByClanId(clanId: Int): ModelPlayer? = transaction {
-        ModelClan.find { ModelClans.id eq clanId }.firstOrNull()?.ownerPlayer
+        val playerId = ModelClan.find { ModelClans.id eq clanId }.firstOrNull()?.ownerPlayer ?: return@transaction null
+        ClanServiceManager.playerMap.getPlayerById(playerId)
     }
 }
